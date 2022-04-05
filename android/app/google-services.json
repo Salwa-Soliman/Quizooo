@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "60436779973",
+    "firebase_url": "https://quizo-firebase-default-rtdb.firebaseio.com",
+    "project_id": "quizo-firebase",
+    "storage_bucket": "quizo-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60436779973:android:2970726d1e61bc04c6f1ac",
+        "android_client_info": {
+          "package_name": "com.quizo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60436779973-vr3d7ne6dcrs51qm8lc7tgnbchkoeos8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4-qMoKw3i1x4P1VNqIXNMUKvmYmzOCJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60436779973-vr3d7ne6dcrs51qm8lc7tgnbchkoeos8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
