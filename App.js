@@ -23,6 +23,8 @@ import Quizzes from './resources/screens/Quizzes';
 import DrawerNavigator from './resources/components/Drawer';
 import 'react-native-gesture-handler';
 import Profile from './resources/screens/Profile';
+import NavigationTabs from './resources/screens/NavigationTabs';
+import StaggerComp from './resources/screens/Stagger';
 
 const Stack = createNativeStackNavigator();
 
@@ -60,8 +62,13 @@ function AuthStack() {
 function AuthenticatedStack() {
   return (
     <Stack.Navigator>
+      {/* <Stack.Screen
+        name="NavigationTabs"
+        component={NavigationTabs}
+        options={{headerShown: false}}
+      /> */}
       <Stack.Screen
-        name="Home"
+        name="HomePage"
         component={HomePage}
         options={{headerShown: false}}
       />
@@ -95,11 +102,16 @@ function AuthenticatedStack() {
         component={Profile}
         options={{headerShown: false}}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
+        name="StaggerComp"
+        component={StaggerComp}
+        // options={{headerShown: false}}
+      /> */}
+      {/* <Stack.Screen
         name="DrawerNavigator"
         component={DrawerNavigator}
         // options={{headerShown: false}}
-      />
+      /> */}
     </Stack.Navigator>
   );
 }

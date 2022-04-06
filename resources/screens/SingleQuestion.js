@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {useRoute} from '@react-navigation/native';
+import {NavigationContainer, useRoute} from '@react-navigation/native';
 import React, {useState, useEffect} from 'react';
 import {Center, VStack, HStack, Skeleton, Box, View} from 'native-base';
 import {COLORS, SIZES} from '../constants';
@@ -14,12 +14,13 @@ import {
   Modal,
   Animated,
   ScrollView,
+  ImageBackground,
 } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Icon} from 'react-native-elements';
 
-
-export default function SingleQuestion() {
+export default function SingleQuestion({navigation}) {
   const [allQuestions, setallQuestions] = useState([]);
   const [dataFetched, setDataFetched] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -45,7 +46,6 @@ export default function SingleQuestion() {
       });
   };
 
-
   useEffect(() => {
     getQuestions();
   }, []);
@@ -55,23 +55,31 @@ export default function SingleQuestion() {
       <View
         style={{
           marginVertical: 25,
-          backgroundColor: COLORS.accent,
-          borderRadius: 25,
-          padding: 10,
+          backgroundColor: '#0df2c980',
+          borderRadius: 18,
+          paddingHorizontal: 20,
+          paddingVertical: 10,
+          justifyContent: 'center',
+          alignItems: 'center',
         }}>
         {/* Question Counter */}
 
-        <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
           <Text
             style={{
-              color: COLORS.white,
+              color: 'white',
               fontSize: 20,
-              opacity: 0.6,
               marginRight: 2,
+              textAlign: 'center',
+              paddingBottom: 5,
             }}>
-            {currentQuestionIndex + 1}
+            {currentQuestionIndex + 1}/{allQuestions.length}
           </Text>
-          <Text
+          {/* <Text
             style={{
               color: COLORS.white,
               fontSize: 18,
@@ -80,12 +88,18 @@ export default function SingleQuestion() {
             }}>
             {' '}
             /{allQuestions.length}
-          </Text>
+          </Text> */}
         </View>
 
         {/* Question */}
 
-        <Text style={{color: COLORS.white, fontSize: 20, fontWeight: 'bold'}}>
+        <Text
+          style={{
+            color: COLORS.white,
+            fontSize: 20,
+            fontWeight: 'bold',
+            textAlign: 'center',
+          }}>
           {allQuestions[currentQuestionIndex]?.question}
         </Text>
       </View>
@@ -108,28 +122,25 @@ export default function SingleQuestion() {
     setShowNextButton(true);
   };
 
-
-
   const handleNext = () => {
     if (currentQuestionIndex == allQuestions.length - 1) {
       //last question
-      
+
       //send score to firebase
 
-      AsyncStorage.getItem('email').then((email) => {
+      AsyncStorage.getItem('email').then(email => {
         firestore()
-        .collection('Scores')
-        .add({
-          email: email,
-          score: score,
-          quiz: quizName
-        })
-        .then(() => {
-          console.log('User added!');
-        });
-      })
-      
-      
+          .collection('Scores')
+          .add({
+            email: email,
+            score: score,
+            quiz: quizName,
+          })
+          .then(() => {
+            console.log('User added!');
+          });
+      });
+
       //show score modal
       setShowScoreModal(true);
     } else {
@@ -176,13 +187,13 @@ export default function SingleQuestion() {
                   ? COLORS.success
                   : option == currentOptionSelected
                   ? COLORS.error
-                  : COLORS.secondary + '40',
+                  : '#6FFDBA80',
               backgroundColor:
                 option == correctOption
                   ? COLORS.success + '20'
                   : option == currentOptionSelected
                   ? COLORS.error + '20'
-                  : COLORS.secondary + '40',
+                  : '#6FFDBA20',
               height: 60,
               borderRadius: 20,
               flexDirection: 'row',
@@ -235,20 +246,22 @@ export default function SingleQuestion() {
   const renderNextButton = () => {
     if (showNextButton) {
       return (
-        <TouchableOpacity
-          onPress={handleNext}
-          style={{
-            marginTop: 20,
-            width: '100%',
-            backgroundColor: COLORS.accent,
-            padding: 20,
-            borderRadius: 5,
-          }}>
-          <Text
-            style={{fontSize: 20, color: COLORS.white, textAlign: 'center'}}>
-            Next
-          </Text>
-        </TouchableOpacity>
+        <Center>
+          <TouchableOpacity
+            onPress={handleNext}
+            style={{
+              marginTop: 20,
+              width: '75%',
+              backgroundColor: '#6FFDBA80',
+              padding: 20,
+              borderRadius: 10,
+            }}>
+            <Text
+              style={{fontSize: 20, color: COLORS.white, textAlign: 'center'}}>
+              Next
+            </Text>
+          </TouchableOpacity>
+        </Center>
       );
     } else {
       return null;
@@ -267,14 +280,14 @@ export default function SingleQuestion() {
           width: '100%',
           height: 20,
           borderRadius: 20,
-          backgroundColor: '#00000020',
+          backgroundColor: '#00000080',
         }}>
         <Animated.View
           style={[
             {
               height: 20,
               borderRadius: 20,
-              backgroundColor: COLORS.accent,
+              backgroundColor: '#6FFDBA80',
             },
             {width: progressAnim},
           ]}></Animated.View>
@@ -288,7 +301,7 @@ export default function SingleQuestion() {
         <View
           style={{
             flex: 1,
-            backgroundColor: COLORS.primary,
+            backgroundColor: '#000D2De0',
             alignItems: 'center',
             justifyContent: 'center',
           }}>
@@ -300,7 +313,8 @@ export default function SingleQuestion() {
               padding: 20,
               alignItems: 'center',
             }}>
-            <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+            <Text
+              style={{fontSize: 20, fontWeight: 'bold', color: '#000D2Dd0'}}>
               {score > allQuestions.length / 2 ? 'Congratulations' : 'Oops!!'}
             </Text>
             <View
@@ -320,30 +334,34 @@ export default function SingleQuestion() {
                 }}>
                 {score}
               </Text>
-              <Text style={{fontSize: 20, color: COLORS.black}}>
+              <Text
+                style={{fontSize: 23, color: '#000D2Dd0', fontWeight: '500'}}>
                 /{allQuestions.length}
               </Text>
             </View>
 
             {/* RetyQuizButton */}
-
-            <TouchableOpacity
-              onPress={restartQuiz}
+            <View
               style={{
-                backgroundColor: COLORS.accent,
-                padding: 20,
-                width: '100%',
-                borderRadius: 20,
+                width: 250,
+                flexDirection: 'row',
+                justifyContent: 'space-around',
               }}>
-              <Text
-                style={{
-                  textAlign: 'center',
-                  color: COLORS.white,
-                  fontSize: 20,
-                }}>
-                Rety Quiz
-              </Text>
-            </TouchableOpacity>
+              <Icon
+                name="refresh"
+                color="#000D2Dd0"
+                size={50}
+                onPress={restartQuiz}
+              />
+              <Icon
+                name="home"
+                color="#000D2Dd0"
+                size={50}
+                onPress={() => {
+                  navigation.replace('HomePage');
+                }}
+              />
+            </View>
           </View>
         </View>
       </Modal>
@@ -351,14 +369,18 @@ export default function SingleQuestion() {
   };
 
   return (
-    <>
+    <ImageBackground
+      source={require('../assets/images/0150afa24b80b0a16a78fdf31b357701.jpg')}
+      resizeMode="cover"
+      // blurRadius={2}
+      style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       {dataFetched ? (
         <ScrollView
           style={{
             flex: 1,
+            width: 400,
             paddingVertical: 40,
-            paddingHorizontal: 16,
-            backgroundColor: COLORS.background,
+            paddingHorizontal: 20,
             position: 'relative',
           }}>
           <StatusBar
@@ -370,7 +392,6 @@ export default function SingleQuestion() {
           {renderProgressBar()}
 
           {/* Question */}
-
           {renderQuestion()}
 
           {/* options */}
@@ -381,22 +402,6 @@ export default function SingleQuestion() {
 
           {/* ShowScoreModal */}
           {renderModal()}
-
-          {/* background image */}
-
-          <Image
-            source={require('../assets/images/24800-6-bubbles-transparent-image.png')}
-            style={{
-              zIndex: -1,
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              opacity: 0.5,
-            }}
-            resizeMode={'contain'}
-          />
-          {/* </View> */}
         </ScrollView>
       ) : (
         <Center w="100%" h="100%">
@@ -419,6 +424,6 @@ export default function SingleQuestion() {
           </VStack>
         </Center>
       )}
-    </>
+    </ImageBackground>
   );
 }

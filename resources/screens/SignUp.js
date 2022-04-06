@@ -186,9 +186,9 @@ export default function SignUp({navigation}) {
 
       try {
         const token = await createUser(email, password);
-        authContext.authenticate(token);
+        authContext.authenticate(email, token);
         console.log('try');
-        navigation.replace('Home');
+        // navigation.replace('Home');
       } catch (err) {
         console.warn(err);
         setErrorMessage('Email Already exists');

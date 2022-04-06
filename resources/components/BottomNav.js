@@ -12,6 +12,7 @@ import {
   Icon,
   Text,
 } from 'native-base';
+
 export default function BottomNav() {
   const [selected, setSelected] = React.useState(1);
 

@@ -22,8 +22,10 @@ import Tracks from './Tracks';
 import ImageWithText from '../components/ImageWithText';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import StaggerComp from './Stagger';
 // import { Colors } from './../ColorPalete/styles';
 export default function HomePage({navigation}) {
+  console.log('home', navigation);
   const [isOpen, setIsOpen] = useState(false);
   const changableText = [
     'expands your network',
@@ -70,7 +72,7 @@ export default function HomePage({navigation}) {
         resizeMode="cover"
         // blurRadius={2}
         style={styles.bgImage}>
-        <Header navigation={navigation} title={'Home'} haveBackArrow={false} />
+        {/* <Header navigation={navigation} title={'Home'} haveBackArrow={false} /> */}
         <ScrollView w="100%" flex="1">
           <Center p="5" flex="1">
             <Center w={'80%'}>
@@ -136,7 +138,8 @@ export default function HomePage({navigation}) {
             </Center>
           </Center>
         </ScrollView>
-        <Footer navigation={navigation} />
+        <StaggerComp navigation={navigation} />
+        {/* <Footer navigation={navigation} /> */}
       </ImageBackground>
     </>
   );

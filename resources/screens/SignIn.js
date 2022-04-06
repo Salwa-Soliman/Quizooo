@@ -161,7 +161,7 @@ export default function SignIn({navigation}) {
     } else {
       try {
         const token = await login(email, password);
-        authContext.authenticate(token);
+        authContext.authenticate(email, token);
         // navigation.navigate('Tracks');
       } catch (err) {
         setmodalError({
