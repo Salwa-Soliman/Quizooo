@@ -1,28 +1,27 @@
 import * as React from 'react';
-import {View, useWindowDimensions} from 'react-native';
+import {useWindowDimensions} from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import Colors from '../ColorPalete/styles';
 import Profile from './Profile';
 import HomePage from './HomePage';
 import Tracks from './Tracks';
-import Quizzes from './Quizzes';
-// import LearningPaths from './LearningPaths';
-
-// const ForthRoute = () => <Quizzes />;
+import LearningPaths from './LearningPaths';
 
 export default function NavigationTabs({navigation}) {
   const layout = useWindowDimensions();
 
-  const FirstRoute = () => <HomePage setIndex={setIndex} />;
+  const FirstRoute = () => (
+    <HomePage setIndex={setIndex} navigation={navigation} />
+  );
   const SecondRoute = () => <Tracks navigation={navigation} />;
   const ThirdRoute = () => <Profile navigation={navigation} />;
+  // const ForthRoute = () => <LearningPaths navigation={navigation} />;
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {key: 'first', title: 'Home'},
     {key: 'second', title: 'Tracks'},
     {key: 'third', title: 'Profile'},
-    // {key: 'forth', title: 'Quizzes'},
+    // {key: 'forth', title: 'LearningPaths'},
   ]);
 
   const renderScene = SceneMap({

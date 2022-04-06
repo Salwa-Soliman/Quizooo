@@ -28,6 +28,7 @@ import StaggerComp from './Stagger';
 // import { Colors } from './../ColorPalete/styles';
 export default function HomePage(props) {
   const {navigation, setIndex} = props;
+  console.log('home', navigation);
   const [isOpen, setIsOpen] = useState(false);
   const changableText = [
     'expands your network',

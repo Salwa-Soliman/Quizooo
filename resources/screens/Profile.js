@@ -8,7 +8,6 @@ import {
   TouchableHighlight,
   ScrollView,
   FlatList,
-  Alert,
 } from 'react-native';
 import {Button} from 'native-base';
 import {AuthContext} from '../store/auth-context';
@@ -22,6 +21,7 @@ export default function UserProfileView({navigation}) {
   const [data, setData] = useState([]);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [lessonIndex, setLessonIndex] = useState(0);
 
   const toggleModal = visible => {
     setModalVisible(visible);
@@ -45,6 +45,14 @@ export default function UserProfileView({navigation}) {
             setData(quizzes);
           });
         });
+
+      firestore()
+        .collection('Lessons')
+        .doc(email)
+        .get()
+        .then(querySnapshot => {
+          setLessonIndex(querySnapshot.data()['index']);
+        });
     });
   };
 
@@ -54,8 +62,8 @@ export default function UserProfileView({navigation}) {
 
   return (
     <>
-      <ScrollView style={{flex: 1}}>
-        <View style={{flex: 1}}>
+      <ScrollView>
+        <View style={styles.container}>
           <View style={styles.header}>
             <View style={styles.headerContent}>
               <Image
@@ -74,7 +82,7 @@ export default function UserProfileView({navigation}) {
             <View style={{flex: 1}}>
               <FlatList
                 horizontal={true}
-                data={data}
+                data={[{name: 'test'}]}
                 renderItem={({item}) => (
                   <View style={styles.card}>
                     <Card style={styles.cardback} title="Local Modules">
@@ -90,9 +98,13 @@ export default function UserProfileView({navigation}) {
                           borderBottomWidth: 1,
                         }}
                       />
-                      <Text style={styles.paragraph}>{item.quiz}</Text>
+                      <Text style={styles.paragraph}>
+                        Lesson {lessonIndex + 1} of 5
+                      </Text>
 
-                      <Text style={styles.paragraph}>Score: {item.score}%</Text>
+                      {/* <Text style={styles.paragraph}>
+                      Score: {item.score}
+                    </Text> */}
                     </Card>
                   </View>
                 )}
@@ -128,7 +140,7 @@ export default function UserProfileView({navigation}) {
             </View>
           </ScrollView>
         </View>
-        {/* <Button onPress={authCtx.logout}>Logout</Button> */}
+        <Button onPress={authCtx.logout}>Logout</Button>
       </ScrollView>
       <StaggerComp navigation={navigation} />
     </>

@@ -72,15 +72,10 @@ function AuthenticatedStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="LearningPaths"
-        component={LearningPaths}
-        options={{headerShown: false}}
-      />
-      {/* <Stack.Screen
         name="NavigationTabs"
         component={NavigationTabs}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen
         name="HomePage"
         component={HomePage}
@@ -116,6 +111,12 @@ function AuthenticatedStack() {
         component={Profile}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="LearningPaths"
+        component={LearningPaths}
+        options={{headerShown: false}}
+      />
+
       {/* <Stack.Screen
         name="StaggerComp"
         component={StaggerComp}

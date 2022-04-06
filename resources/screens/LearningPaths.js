@@ -12,8 +12,10 @@ import {ImageBackground} from 'react-native';
 import {getMaterial} from '../util/E-Learning';
 import Topic from '../components/Topic';
 import {TouchableOpacity} from 'react-native';
-import LoadingOverlay from '../components/LoadingOverlay';
+import LoadingOverlay from './../components/LoadingOverlay';
 import ModalComponent from '../components/ModalComponent';
+import firestore from '@react-native-firebase/firestore';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function LearningPaths() {
   const [lessonIndex, setLessonIndex] = useState(0);
@@ -22,7 +24,7 @@ export default function LearningPaths() {
   const scrollRef = useRef();
 
   const scrollTop = () => {
-    scrollRef.current?.scrollTo({
+    scrollRef.current.scrollTo({
       y: 0,
       animated: true,
     });
@@ -31,9 +33,39 @@ export default function LearningPaths() {
   const updateIndex = n => {
     scrollTop();
     setLessonIndex(n);
+
+    AsyncStorage.getItem('email').then(email => {
+      firestore()
+        .collection('Lessons')
+        .doc(email)
+        .set(
+          {
+            index: n,
+          },
+          {merge: true},
+        )
+        .then(() => {
+          console.log('User added!');
+        });
+    });
   };
 
   useEffect(() => {
+    AsyncStorage.getItem('email').then(email => {
+      firestore()
+        .collection('Lessons')
+        .doc(email)
+        .set(
+          {
+            index: 0,
+          },
+          {merge: true},
+        )
+        .then(() => {
+          console.log('User added!');
+        });
+    });
+
     if (!material.length) {
       getMaterial('M6WK')
         .then(response => {
