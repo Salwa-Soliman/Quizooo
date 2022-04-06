@@ -3,8 +3,9 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import {Heading, View, Text, Center, ScrollView} from 'native-base';
+import StaggerComp from './Stagger';
 
-export default function Privacy() {
+export default function Privacy({navigation}) {
   const arr = [
     {
       title: '1. About this Notice',
@@ -43,34 +44,37 @@ export default function Privacy() {
     },
   ];
   return (
-    <Center w="100%">
-      <ScrollView safeArea p="2" w="100%" py="8" px="8">
-        <Heading textAlign={'center'} mb="3" color={'orangered'}>
-          Privacy
-        </Heading>
+    <>
+      <Center w="100%">
+        <ScrollView safeArea p="2" w="100%" py="8" px="8">
+          <Heading textAlign={'center'} mb="3" color={'orangered'}>
+            Privacy
+          </Heading>
 
-        {/* hr  */}
-        <View
-          style={{
-            height: 2,
-            backgroundColor: 'orangered',
-          }}
-        />
-        {arr.map((q, i) => (
-          <View key={i}>
-            <Text
-              style={{
-                fontSize: 20,
-                marginBottom: 10,
-                marginTop: 20,
-                color: 'orangered',
-              }}>
-              {q.title}
-            </Text>
-            <Text style={{}}>{q.content}</Text>
-          </View>
-        ))}
-      </ScrollView>
-    </Center>
+          {/* hr  */}
+          <View
+            style={{
+              height: 2,
+              backgroundColor: 'orangered',
+            }}
+          />
+          {arr.map((q, i) => (
+            <View key={i}>
+              <Text
+                style={{
+                  fontSize: 20,
+                  marginBottom: 10,
+                  marginTop: 20,
+                  color: 'orangered',
+                }}>
+                {q.title}
+              </Text>
+              <Text style={{}}>{q.content}</Text>
+            </View>
+          ))}
+        </ScrollView>
+      </Center>
+      <StaggerComp navigation={navigation} />
+    </>
   );
 }

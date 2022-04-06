@@ -1,78 +1,85 @@
 import React from 'react';
 import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native';
+import StaggerComp from './Stagger';
 
 export default function Quizzes({navigation, route}) {
   let cources = route.params;
 
   return (
-    <ScrollView style={{backgroundColor: '#3E4491'}}>
-      <Text
-        style={{
-          textAlign: 'center',
-          color: '#fff',
-          padding: 20,
-          fontSize: 40,
-          fontWeight: 'bold',
-          flex: 1,
-        }}>
-        Let's Start
-      </Text>
+    <>
+      <ScrollView style={{backgroundColor: '#3E4491'}}>
+        <Text
+          style={{
+            textAlign: 'center',
+            color: '#fff',
+            padding: 20,
+            fontSize: 40,
+            fontWeight: 'bold',
+            flex: 1,
+          }}>
+          Let's Start
+        </Text>
 
-      <View
-        style={{
-          flex: 4,
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          justifyContent: 'space-evenly',
-        }}>
-        {cources.map((item, index) => {
-          return (
-            <View
-              style={{width: 140, height: 140, marginBottom: 20}}
-              key={item.name}>
-              <TouchableOpacity
-                style={{flex: 1}}
-                onPress={() => {
-                  navigation.navigate('SingleQuestion', {quizCode: item.code, quizName: item.name});
-                }}>
-                <View
-                  style={{
-                    borderColor: '#1A1B4B',
-                    borderWidth: 5,
-                    margin: 9,
-                    borderRadius: 20,
-                    flex: 1,
+        <View
+          style={{
+            flex: 4,
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'space-evenly',
+          }}>
+          {cources.map((item, index) => {
+            return (
+              <View
+                style={{width: 140, height: 140, marginBottom: 20}}
+                key={item.name}>
+                <TouchableOpacity
+                  style={{flex: 1}}
+                  onPress={() => {
+                    navigation.navigate('SingleQuestion', {
+                      quizCode: item.code,
+                      quizName: item.name,
+                    });
                   }}>
-                  <Image
-                    // source={require('../assets/1.jpg')}
-                    source={item.image}
-                    alt="test"
+                  <View
                     style={{
-                      width: '100%',
-                      height: 150,
-                      borderRadius: 15,
+                      borderColor: '#1A1B4B',
+                      borderWidth: 5,
+                      margin: 9,
+                      borderRadius: 20,
                       flex: 1,
-                    }}
-                  />
-                </View>
-                <View>
-                  <Text
-                    style={{
-                      fontSize: 17,
-                      fontWeight: 'bold',
-                      textAlign: 'center',
-                      color: '#fff',
-                      marginTop: 10,
                     }}>
-                    {item.name}
-                  </Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-          );
-        })}
-      </View>
-    </ScrollView>
+                    <Image
+                      // source={require('../assets/1.jpg')}
+                      source={item.image}
+                      alt="test"
+                      style={{
+                        width: '100%',
+                        height: 150,
+                        borderRadius: 15,
+                        flex: 1,
+                      }}
+                    />
+                  </View>
+                  <View>
+                    <Text
+                      style={{
+                        fontSize: 17,
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                        color: '#fff',
+                        marginTop: 10,
+                      }}>
+                      {item.name}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            );
+          })}
+        </View>
+      </ScrollView>
+      <StaggerComp navigation={navigation} />
+    </>
   );
 }
 {

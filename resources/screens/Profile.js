@@ -15,6 +15,7 @@ import {AuthContext} from '../store/auth-context';
 import {Card} from 'react-native-elements';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import StaggerComp from './Stagger';
 
 export default function UserProfileView() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -22,17 +23,15 @@ export default function UserProfileView() {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
 
-
-
   const toggleModal = visible => {
     setModalVisible(visible);
   };
   const authCtx = useContext(AuthContext);
 
   const getQuizzes = () => {
-    return AsyncStorage.getItem('email').then((email) => {
-      setEmail(email)
-      var username = email.substring(0, email.indexOf("@"));
+    return AsyncStorage.getItem('email').then(email => {
+      setEmail(email);
+      var username = email.substring(0, email.indexOf('@'));
       setName(username);
       firestore()
         .collection('Scores')
@@ -40,20 +39,18 @@ export default function UserProfileView() {
         .get()
         .then(querySnapshot => {
           var quizzes = [];
-          querySnapshot.forEach((res) => {
-            const { email, quiz, score } = res.data();
-            quizzes.push({email, quiz, score})
-            setData(quizzes)
+          querySnapshot.forEach(res => {
+            const {email, quiz, score} = res.data();
+            quizzes.push({email, quiz, score});
+            setData(quizzes);
           });
-      });
-    })
+        });
+    });
   };
 
   useEffect(() => {
     getQuizzes();
   }, []);
-
-  
 
   return (
     <ScrollView>
@@ -94,9 +91,7 @@ export default function UserProfileView() {
                     />
                     <Text style={styles.paragraph}>{item.quiz}</Text>
 
-                    <Text style={styles.paragraph}>
-                      Score: {item.score}%
-                    </Text>
+                    <Text style={styles.paragraph}>Score: {item.score}%</Text>
                   </Card>
                 </View>
               )}
@@ -122,7 +117,9 @@ export default function UserProfileView() {
                     />
 
                     <Text style={styles.gradeparagraph}>{item.quiz}</Text>
-                    <Text style={styles.gradeparagraph}>Score: {item.score}%</Text>
+                    <Text style={styles.gradeparagraph}>
+                      Score: {item.score}%
+                    </Text>
                   </View>
                 </View>
               )}
@@ -131,6 +128,7 @@ export default function UserProfileView() {
         </ScrollView>
       </View>
       <Button onPress={authCtx.logout}>Logout</Button>
+      <StaggerComp navigation={navigation} />
     </ScrollView>
   );
 }

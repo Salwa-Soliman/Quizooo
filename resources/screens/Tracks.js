@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native';
+import StaggerComp from './Stagger';
 
 export default function Tracks({navigation}) {
   let traccks = [
@@ -66,57 +67,60 @@ export default function Tracks({navigation}) {
     navigation.navigate('Quizzes', data.cources);
   };
   return (
-    <ScrollView style={{backgroundColor: '#ddd', padding: 14}}>
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          justifyContent: 'space-evenly',
-        }}>
-        {traccks.map(item => {
-          return (
-            <View
-              style={{marginTop: item.margin, width: 180}}
-              key={item.trackName}>
-              <TouchableOpacity
-                onPress={() => navigateToCources({cources: item.cources})}
-                style={{
-                  borderColor: '#1A1B4B',
-                  borderWidth: 5,
-                  margin: 9,
-                  borderRadius: 20,
-                  backgroundColor: '#3E4491',
-                }}>
-                <View>
-                  <Image
-                    source={item.image}
-                    style={{
-                      width: '100%',
-                      height: 150,
-                      borderRadius: 15,
-                      flex: 1,
-                    }}
-                  />
-                </View>
-                <View>
-                  <Text
-                    style={{
-                      fontSize: 17,
-                      fontWeight: 'bold',
-                      textAlign: 'center',
-                      color: '#fff',
-                      padding: 10,
-                    }}>
-                    {item.trackName}
-                  </Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-          );
-        })}
-      </View>
-    </ScrollView>
+    <>
+      <ScrollView style={{backgroundColor: '#ddd', padding: 14}}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'space-evenly',
+          }}>
+          {traccks.map(item => {
+            return (
+              <View
+                style={{marginTop: item.margin, width: 180}}
+                key={item.trackName}>
+                <TouchableOpacity
+                  onPress={() => navigateToCources({cources: item.cources})}
+                  style={{
+                    borderColor: '#1A1B4B',
+                    borderWidth: 5,
+                    margin: 9,
+                    borderRadius: 20,
+                    backgroundColor: '#3E4491',
+                  }}>
+                  <View>
+                    <Image
+                      source={item.image}
+                      style={{
+                        width: '100%',
+                        height: 150,
+                        borderRadius: 15,
+                        flex: 1,
+                      }}
+                    />
+                  </View>
+                  <View>
+                    <Text
+                      style={{
+                        fontSize: 17,
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                        color: '#fff',
+                        padding: 10,
+                      }}>
+                      {item.trackName}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            );
+          })}
+        </View>
+      </ScrollView>
+      <StaggerComp navigation={navigation} />
+    </>
   );
 }
 

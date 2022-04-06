@@ -13,8 +13,9 @@ import {
   TextArea,
   Button,
 } from 'native-base';
+import StaggerComp from './Stagger';
 
-export default function Help() {
+export default function Help({navigation}) {
   return (
     <Center w="100%" flex={1} justifyContent={'center'}>
       <Center safeArea p="2" w="100%" py="8" px="8">
@@ -35,6 +36,7 @@ export default function Help() {
           <Button my={3}>Submit</Button>
         </VStack>
       </Center>
+      <StaggerComp navigation={navigation} />
     </Center>
   );
 }
