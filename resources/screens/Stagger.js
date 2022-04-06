@@ -6,21 +6,20 @@ import {
   Stagger,
   HStack,
   Center,
+  Tooltip,
 } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AuthContext} from '../store/auth-context';
-
 import {StyleSheet, View} from 'react-native';
 
 export default function StaggerComp({navigation}) {
   const authCtx = useContext(AuthContext);
   const {isOpen, onToggle} = useDisclose();
 
-  console.log('stagger', navigation);
   return (
     <View style={styles.mainView}>
       <Center>
-        <Box alignItems="center" minH="220">
+        <Box alignItems="center" minH="180">
           <Stagger
             visible={isOpen}
             initial={{
@@ -56,7 +55,7 @@ export default function StaggerComp({navigation}) {
             <IconButton
               mb="4"
               variant="solid"
-              bg="indigo.500"
+              bg="#6FFDBA"
               colorScheme="indigo"
               borderRadius="full"
               onPress={() => {
@@ -67,7 +66,7 @@ export default function StaggerComp({navigation}) {
             <IconButton
               mb="4"
               variant="solid"
-              bg="yellow.400"
+              bg="#6FFDBA"
               colorScheme="yellow"
               borderRadius="full"
               onPress={() => {
@@ -75,6 +74,7 @@ export default function StaggerComp({navigation}) {
               }}
               icon={<Icon size={30} name="shield-account" />}
             />
+
             {/* <IconButton
               mb="4"
               variant="solid"
@@ -86,7 +86,7 @@ export default function StaggerComp({navigation}) {
             <IconButton
               mb="4"
               variant="solid"
-              bg="red.500"
+              bg="#6FFDBA"
               colorScheme="red"
               borderRadius="full"
               onPress={() => {
@@ -102,8 +102,8 @@ export default function StaggerComp({navigation}) {
             borderRadius="full"
             size="lg"
             onPress={onToggle}
-            bg="cyan.400"
-            icon={<Icon size={30} name="view-headline" />}
+            bg="#ffffff"
+            icon={<Icon size={30} name="dots-horizontal" />}
           />
         </HStack>
       </Center>

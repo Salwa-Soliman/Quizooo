@@ -15,8 +15,15 @@ import {
 } from 'native-base';
 import StaggerComp from './Stagger';
 
+ import {ImageBackground} from 'react-native';
+
 export default function Help({navigation}) {
   return (
+    <ImageBackground
+      source={require('../assets/images/0150afa24b80b0a16a78fdf31b357701.jpg')}
+      resizeMode="cover"
+      // blurRadius={2}
+      style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
     <Center w="100%" flex={1} justifyContent={'center'}>
       <Center safeArea p="2" w="100%" py="8" px="8">
         <VStack alignItems={'center'}>
@@ -25,7 +32,7 @@ export default function Help({navigation}) {
             alt="help"
           />
           {/* <Heading py={'5'}>Quizo Customer Care</Heading> */}
-          <Text my={5}>How can we help you?</Text>
+          <Text my={5} style={{color: 'white'}}>How can we help you?</Text>
           <TextArea
             placeholder="Leave your message and we will contact you ASAP"
             placeholderTextColor={'#777'}
@@ -33,10 +40,11 @@ export default function Help({navigation}) {
             maxW="300"
           />
 
-          <Button my={3}>Submit</Button>
+          <Button bg={'#0df2c980'} my={3}>Submit</Button>
         </VStack>
       </Center>
       <StaggerComp navigation={navigation} />
     </Center>
+    </ImageBackground>
   );
 }

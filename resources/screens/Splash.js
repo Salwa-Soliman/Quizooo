@@ -5,7 +5,7 @@ import React, {useContext} from 'react';
 import {AuthContext} from '../store/auth-context';
 import {Center, Box, Text, HStack} from 'native-base';
 import {Colors} from '../ColorPalete/styles';
-import {ImageBackground} from 'react-native';
+import {ImageBackground, StatusBar} from 'react-native';
 
 export default function Splash({navigation}) {
   const authCtx = useContext(AuthContext);
@@ -15,6 +15,7 @@ export default function Splash({navigation}) {
       style={{flex: 1}}
       source={require('../assets/images/0150afa24b80b0a16a78fdf31b357701.jpg')}
       resizeMode="cover">
+      <StatusBar barStyle="light-content" backgroundColor="black" />
       {/* bg={Colors.bgColor} */}
       <Center flex="1" w="100%">
         <HStack>

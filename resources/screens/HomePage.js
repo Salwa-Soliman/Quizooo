@@ -15,7 +15,9 @@ import {
   PresenceTransition,
   ScrollView,
   FlatList,
+  Tooltip,
 } from 'native-base';
+import NavigationTabs from './NavigationTabs';
 import BottomNav from '../components/BottomNav';
 import {Colors} from '../ColorPalete/styles';
 import Tracks from './Tracks';
@@ -24,8 +26,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import StaggerComp from './Stagger';
 // import { Colors } from './../ColorPalete/styles';
-export default function HomePage({navigation}) {
-  console.log('home', navigation);
+export default function HomePage(props) {
+  const {navigation, setIndex} = props;
   const [isOpen, setIsOpen] = useState(false);
   const changableText = [
     'expands your network',
@@ -85,16 +87,16 @@ export default function HomePage({navigation}) {
                     // fontWeight="600"
                   >
                     Welcome to{' '}
-                    <Text color={'info.300'} shadow="3">
+                    <Text color={'#6FFDBA'} shadow="3">
                       Quizo,
                     </Text>
                     {'\n'}the coding app for beginners.
                   </Heading>
                   <Box alignItems="center" textAlign={'center'} my="3">
-                    <Text fontSize={20} color="info.300" fontWeight="500">
+                    <Text fontSize={20} color="#6FFDBA" fontWeight="500">
                       Learning to code
                     </Text>
-                    <Text color="info.300" fontSize={17}>
+                    <Text color="#6FFDBA" fontSize={17}>
                       {changedText}
                     </Text>
                   </Box>
@@ -120,13 +122,15 @@ export default function HomePage({navigation}) {
               {/* </PresenceTransition> */}
               <Center>
                 <HStack>
-                  <Button
-                    px="5"
-                    py={'3'}
-                    bg={'info.300'}
-                    onPress={() => navigation.navigate('Tracks')}>
-                    Start learning
-                  </Button>
+                  <Tooltip label="Click here to read more" openDelay={500}>
+                    <Button
+                      px="5"
+                      py={'3'}
+                      bg={'#6FFDBAa0'}
+                      onPress={() => setIndex(1)}>
+                      Start learning
+                    </Button>
+                  </Tooltip>
                 </HStack>
               </Center>
             </Center>

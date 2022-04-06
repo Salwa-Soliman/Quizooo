@@ -372,7 +372,7 @@ export default function SingleQuestion({navigation}) {
     <ImageBackground
       source={require('../assets/images/0150afa24b80b0a16a78fdf31b357701.jpg')}
       resizeMode="cover"
-      // blurRadius={2}
+      // blurRadius={1}
       style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       {dataFetched ? (
         <ScrollView
@@ -383,10 +383,7 @@ export default function SingleQuestion({navigation}) {
             paddingHorizontal: 20,
             position: 'relative',
           }}>
-          <StatusBar
-            barStyle="light-content"
-            backgroundColor={COLORS.primary}
-          />
+          <StatusBar barStyle="light-content" backgroundColor="black" />
 
           {/* Progress bar */}
           {renderProgressBar()}

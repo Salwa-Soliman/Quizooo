@@ -17,7 +17,7 @@ import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import StaggerComp from './Stagger';
 
-export default function UserProfileView() {
+export default function UserProfileView({navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
   const [data, setData] = useState([]);
   const [email, setEmail] = useState('');
@@ -53,83 +53,85 @@ export default function UserProfileView() {
   }, []);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <View style={styles.headerContent}>
-            <Image
-              style={styles.avatar}
-              source={{
-                uri: 'https://i.pinimg.com/originals/3e/7a/ac/3e7aac434cbcd588608af125e7b88ef4.jpg',
-              }}
-            />
+    <>
+      <ScrollView style={{flex: 1}}>
+        <View style={{flex: 1}}>
+          <View style={styles.header}>
+            <View style={styles.headerContent}>
+              <Image
+                style={styles.avatar}
+                source={{
+                  uri: 'https://i.pinimg.com/originals/3e/7a/ac/3e7aac434cbcd588608af125e7b88ef4.jpg',
+                }}
+              />
 
-            <Text style={styles.name}> {name} </Text>
-            <Text style={styles.userInfo}>{email}</Text>
+              <Text style={styles.name}> {name} </Text>
+              <Text style={styles.userInfo}>{email}</Text>
+            </View>
           </View>
-        </View>
 
-        <ScrollView>
-          <View style={{flex: 1}}>
-            <FlatList
-              horizontal={true}
-              data={data}
-              renderItem={({item}) => (
-                <View style={styles.card}>
-                  <Card style={styles.cardback} title="Local Modules">
-                    <Image
-                      style={styles.trackimg}
-                      source={{
-                        uri: 'https://i.pinimg.com/originals/3e/7a/ac/3e7aac434cbcd588608af125e7b88ef4.jpg',
-                      }}
-                    />
-                    <View
-                      style={{
-                        borderBottomColor: 'black',
-                        borderBottomWidth: 1,
-                      }}
-                    />
-                    <Text style={styles.paragraph}>{item.quiz}</Text>
+          <ScrollView>
+            <View style={{flex: 1}}>
+              <FlatList
+                horizontal={true}
+                data={data}
+                renderItem={({item}) => (
+                  <View style={styles.card}>
+                    <Card style={styles.cardback} title="Local Modules">
+                      <Image
+                        style={styles.trackimg}
+                        source={{
+                          uri: 'https://i.pinimg.com/originals/3e/7a/ac/3e7aac434cbcd588608af125e7b88ef4.jpg',
+                        }}
+                      />
+                      <View
+                        style={{
+                          borderBottomColor: 'black',
+                          borderBottomWidth: 1,
+                        }}
+                      />
+                      <Text style={styles.paragraph}>{item.quiz}</Text>
 
-                    <Text style={styles.paragraph}>Score: {item.score}%</Text>
-                  </Card>
-                </View>
-              )}
-            />
-          </View>
-        </ScrollView>
-
-        <Text style={styles.completedparagraph}> Completed </Text>
-
-        <ScrollView>
-          <View style={{flex: 1}}>
-            <FlatList
-              horizontal={true}
-              data={data}
-              renderItem={({item}) => (
-                <View style={styles.card}>
-                  <View style={styles.cardbackground} title="Local Modules">
-                    <Image
-                      style={styles.gradeimg}
-                      source={{
-                        uri: 'https://i.pinimg.com/originals/3e/7a/ac/3e7aac434cbcd588608af125e7b88ef4.jpg',
-                      }}
-                    />
-
-                    <Text style={styles.gradeparagraph}>{item.quiz}</Text>
-                    <Text style={styles.gradeparagraph}>
-                      Score: {item.score}%
-                    </Text>
+                      <Text style={styles.paragraph}>Score: {item.score}%</Text>
+                    </Card>
                   </View>
-                </View>
-              )}
-            />
-          </View>
-        </ScrollView>
-      </View>
-      <Button onPress={authCtx.logout}>Logout</Button>
+                )}
+              />
+            </View>
+          </ScrollView>
+
+          <Text style={styles.completedparagraph}> Completed </Text>
+
+          <ScrollView>
+            <View style={{flex: 1}}>
+              <FlatList
+                horizontal={true}
+                data={data}
+                renderItem={({item}) => (
+                  <View style={styles.card}>
+                    <View style={styles.cardbackground} title="Local Modules">
+                      <Image
+                        style={styles.gradeimg}
+                        source={{
+                          uri: 'https://i.pinimg.com/originals/3e/7a/ac/3e7aac434cbcd588608af125e7b88ef4.jpg',
+                        }}
+                      />
+
+                      <Text style={styles.gradeparagraph}>{item.quiz}</Text>
+                      <Text style={styles.gradeparagraph}>
+                        Score: {item.score}%
+                      </Text>
+                    </View>
+                  </View>
+                )}
+              />
+            </View>
+          </ScrollView>
+        </View>
+        {/* <Button onPress={authCtx.logout}>Logout</Button> */}
+      </ScrollView>
       <StaggerComp navigation={navigation} />
-    </ScrollView>
+    </>
   );
 }
 

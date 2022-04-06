@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, {useState, useRef, useEffect} from 'react';
 import {FlatList, Text, HStack, Center, View, Box, VStack} from 'native-base';
-import {ImageBackground, Animated} from 'react-native';
+import {ImageBackground, Animated, StatusBar} from 'react-native';
 import {Colors} from '../ColorPalete/styles';
 import OnboardingItem from '../components/OnboardingItem';
 import Pagination from '../components/Pagination';
@@ -89,6 +89,8 @@ export default function Onboarding({navigation}) {
       <ImageBackground
         resizeMode="cover"
         source={require('../assets/images/0150afa24b80b0a16a78fdf31b357701.jpg')}>
+        <StatusBar barStyle="light-content" backgroundColor="black" />
+
         <Box flex={'2'}>
           {/* Logo  */}
           <HStack justifyContent={'center'} pt={'10'}>

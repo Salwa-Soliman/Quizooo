@@ -4,6 +4,7 @@
 import React from 'react';
 import {Heading, View, Text, Center, ScrollView} from 'native-base';
 import StaggerComp from './Stagger';
+import {ImageBackground} from 'react-native';
 
 export default function Privacy({navigation}) {
   const arr = [
@@ -45,36 +46,42 @@ export default function Privacy({navigation}) {
   ];
   return (
     <>
-      <Center w="100%">
-        <ScrollView safeArea p="2" w="100%" py="8" px="8">
-          <Heading textAlign={'center'} mb="3" color={'orangered'}>
-            Privacy
-          </Heading>
+      <ImageBackground
+        source={require('../assets/images/0150afa24b80b0a16a78fdf31b357701.jpg')}
+        resizeMode="cover"
+        // blurRadius={2}
+        style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Center w="100%">
+          <ScrollView safeArea p="2" w="100%" py="8" px="8">
+            <Heading textAlign={'center'} mb="3" color={'info.300'}>
+              Privacy
+            </Heading>
 
-          {/* hr  */}
-          <View
-            style={{
-              height: 2,
-              backgroundColor: 'orangered',
-            }}
-          />
-          {arr.map((q, i) => (
-            <View key={i}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  marginBottom: 10,
-                  marginTop: 20,
-                  color: 'orangered',
-                }}>
-                {q.title}
-              </Text>
-              <Text style={{}}>{q.content}</Text>
-            </View>
-          ))}
-        </ScrollView>
-      </Center>
-      <StaggerComp navigation={navigation} />
+            {/* hr  */}
+            <View
+              style={{
+                height: 2,
+                backgroundColor: 'info.300',
+              }}
+            />
+            {arr.map((q, i) => (
+              <View key={i}>
+                <Text
+                  style={{
+                    fontSize: 20,
+                    marginBottom: 10,
+                    marginTop: 20,
+                    color: 'info.300',
+                  }}>
+                  {q.title}
+                </Text>
+                <Text style={{color: 'white'}}>{q.content}</Text>
+              </View>
+            ))}
+          </ScrollView>
+        </Center>
+        <StaggerComp navigation={navigation} />
+      </ImageBackground>
     </>
   );
 }

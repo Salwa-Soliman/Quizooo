@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native';
+import {
+  ScrollView,
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  ImageBackground,
+} from 'react-native';
 import StaggerComp from './Stagger';
 
 export default function Tracks({navigation}) {
@@ -67,8 +74,11 @@ export default function Tracks({navigation}) {
     navigation.navigate('Quizzes', data.cources);
   };
   return (
-    <>
-      <ScrollView style={{backgroundColor: '#ddd', padding: 14}}>
+    <ImageBackground
+      style={{flex: 1}}
+      resizeMode="cover"
+      source={require('../assets/images/0150afa24b80b0a16a78fdf31b357701.jpg')}>
+      <ScrollView style={{padding: 14}}>
         <View
           style={{
             flex: 1,
@@ -120,7 +130,7 @@ export default function Tracks({navigation}) {
         </View>
       </ScrollView>
       <StaggerComp navigation={navigation} />
-    </>
+    </ImageBackground>
   );
 }
 

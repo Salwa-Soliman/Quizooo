@@ -25,6 +25,7 @@ import 'react-native-gesture-handler';
 import Profile from './resources/screens/Profile';
 import NavigationTabs from './resources/screens/NavigationTabs';
 import StaggerComp from './resources/screens/Stagger';
+import LearningPaths from './resources/screens/LearningPaths';
 
 const Stack = createNativeStackNavigator();
 
@@ -53,8 +54,16 @@ function AuthStack() {
         component={Onboarding}
         options={{headerShown: false}}
       />
-      <Stack.Screen name="SignIn" component={SignIn} />
-      <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen
+        name="SignIn"
+        component={SignIn}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SignUp"
+        component={SignUp}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 }
@@ -62,6 +71,11 @@ function AuthStack() {
 function AuthenticatedStack() {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="LearningPaths"
+        component={LearningPaths}
+        options={{headerShown: false}}
+      />
       {/* <Stack.Screen
         name="NavigationTabs"
         component={NavigationTabs}
@@ -90,12 +104,12 @@ function AuthenticatedStack() {
       <Stack.Screen
         name="Help"
         component={Help}
-        options={{headerShown: false}}
+        options={{headerStyle: {backgroundColor: '#6FFDBA'}}}
       />
       <Stack.Screen
         name="Privacy"
         component={Privacy}
-        options={{headerShown: false}}
+        options={{headerStyle: {backgroundColor: '#6FFDBA'}}}
       />
       <Stack.Screen
         name="Profile"

@@ -8,13 +8,14 @@ import Tracks from './Tracks';
 import Quizzes from './Quizzes';
 // import LearningPaths from './LearningPaths';
 
-const FirstRoute = () => <HomePage />;
-const SecondRoute = () => <Tracks />;
-const ThirdRoute = () => <Profile />;
 // const ForthRoute = () => <Quizzes />;
 
-export default function NavigationTabs() {
+export default function NavigationTabs({navigation}) {
   const layout = useWindowDimensions();
+
+  const FirstRoute = () => <HomePage setIndex={setIndex} />;
+  const SecondRoute = () => <Tracks navigation={navigation} />;
+  const ThirdRoute = () => <Profile navigation={navigation} />;
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
@@ -30,10 +31,20 @@ export default function NavigationTabs() {
     third: ThirdRoute,
     // forth: ForthRoute,
   });
+  const renderTabBar = props => (
+    <TabBar
+      {...props}
+      activeColor={'white'}
+      inactiveColor={'black'}
+      style={{backgroundColor: '#033825a5'}}
+    />
+  );
+
   return (
     <TabView
       navigationState={{index, routes}}
       renderScene={renderScene}
+      renderTabBar={renderTabBar}
       onIndexChange={setIndex}
       initialLayout={{width: layout.width}}
     />
