@@ -1,5 +1,4 @@
-import { COLORS, SIZES} from "./theme";
+/* eslint-disable prettier/prettier */
+import {COLORS, SIZES} from './theme';
 
-export{
-    COLORS,SIZES
-}
+export {COLORS, SIZES};

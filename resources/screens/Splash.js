@@ -3,7 +3,7 @@
 /* eslint-disable prettier/prettier */
 import React, {useContext} from 'react';
 import {AuthContext} from '../store/auth-context';
-import {Center, Box, Text, HStack} from 'native-base';
+import {Center, Text, HStack} from 'native-base';
 import {Colors} from '../ColorPalete/styles';
 import {ImageBackground, StatusBar} from 'react-native';
 
@@ -19,13 +19,13 @@ export default function Splash({navigation}) {
       {/* bg={Colors.bgColor} */}
       <Center flex="1" w="100%">
         <HStack>
-          <Text color={Colors.mainColor} fontSize="40" fontWeight={'500'}>
+          <Text color={Colors.main200} fontSize="40" fontWeight={'500'}>
             {'<'}
           </Text>
           <Text color="#fff" fontSize="40" fontWeight={'500'}>
             Quizo
           </Text>
-          <Text color={Colors.mainColor} fontSize="40" fontWeight={'500'}>
+          <Text color={Colors.main200} fontSize="40" fontWeight={'500'}>
             {' />'}
           </Text>
         </HStack>

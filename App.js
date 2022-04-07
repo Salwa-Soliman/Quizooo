@@ -72,8 +72,28 @@ function AuthenticatedStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
+        name="Splash"
+        component={Splash}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
         name="NavigationTabs"
         component={NavigationTabs}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Onboarding"
+        component={Onboarding}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SignIn"
+        component={SignIn}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SignUp"
+        component={SignUp}
         options={{headerShown: false}}
       />
       <Stack.Screen
@@ -94,7 +114,7 @@ function AuthenticatedStack() {
       <Stack.Screen
         name="SingleQuestion"
         component={SingleQuestion}
-        options={{headerShown: false}}
+        // options={{headerShown: false}}
       />
       <Stack.Screen
         name="Help"
@@ -114,19 +134,14 @@ function AuthenticatedStack() {
       <Stack.Screen
         name="LearningPaths"
         component={LearningPaths}
-        options={{headerShown: false}}
+        // options={{headerShown: false}}
       />
 
-      {/* <Stack.Screen
-        name="StaggerComp"
-        component={StaggerComp}
-        // options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
-        name="DrawerNavigator"
-        component={DrawerNavigator}
-        // options={{headerShown: false}}
-      /> */}
+      <Stack.Screen
+        name="Onboarding"
+        component={Onboarding}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 }
@@ -136,8 +151,65 @@ function Navigation() {
 
   return (
     <NavigationContainer>
-      {!authCtx.isAuthenticated && <AuthStack />}
-      {authCtx.isAuthenticated && <AuthenticatedStack />}
+      <Stack.Navigator>
+        <Stack.Screen
+          name="NavigationTabs"
+          component={NavigationTabs}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="HomePage"
+          component={HomePage}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Tracks"
+          component={Tracks}
+          // options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Quizzes"
+          component={Quizzes}
+          options={{headerStyle: {backgroundColor: Colors.main200}}}
+
+          // options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SingleQuestion"
+          component={SingleQuestion}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Help"
+          component={Help}
+          options={{headerStyle: {backgroundColor: Colors.main200}}}
+        />
+        <Stack.Screen
+          name="Privacy"
+          component={Privacy}
+          options={{headerStyle: {backgroundColor: Colors.main200}}}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="LearningPaths"
+          component={LearningPaths}
+          options={{headerStyle: {backgroundColor: Colors.main200}}}
+
+          // options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Onboarding"
+          component={Onboarding}
+          options={{headerShown: false}}
+        />
+      </Stack.Navigator>
+      {/* {!authCtx.isAuthenticated && <AuthStack />}
+      {authCtx.isAuthenticated && <AuthenticatedStack />} */}
     </NavigationContainer>
   );
 }

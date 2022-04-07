@@ -7,7 +7,11 @@ export default function ImageWithText({data}) {
       {data.map((item, index, array) => (
         <Box key={index}>
           <Image source={item.image} alt="image" resizeMode="contain" />
-          <Text color={'info.100'} fontSize="18" textAlign="center" mt="-20">
+          <Text
+            color={'info.100'}
+            fontSize="18"
+            textAlign="center"
+            mt={index === 1 ? '-15' : '-20'}>
             {item.text}
           </Text>
         </Box>

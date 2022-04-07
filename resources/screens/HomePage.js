@@ -28,8 +28,9 @@ import StaggerComp from './Stagger';
 // import { Colors } from './../ColorPalete/styles';
 export default function HomePage(props) {
   const {navigation, setIndex} = props;
-  console.log('home', navigation);
+
   const [isOpen, setIsOpen] = useState(false);
+
   const changableText = [
     'expands your network',
     'develops new skills',
@@ -44,25 +45,26 @@ export default function HomePage(props) {
       text: 'Learn with fun, quick lessons on your phone that teach you to write real JavaScript.',
     },
     {
-      image: require('../assets/images/home4.png'),
+      image: require('../assets/images/track-your-progress.png'),
       text: 'Move through progressively challenging levels as you develop your abilities.',
     },
     {
-      image: require('../assets/images/home4.png'),
+      image: require('../assets/images/learn-like-a-pro.png'),
       text: 'Graduate with fundamental programming skills for your next step as a coder.',
     },
   ];
+
   const [changedText, setChangedText] = useState('opens new doors');
   function show() {
     if (!isOpen) {
       setTimeout(() => setIsOpen(true), 500);
 
-      // setInterval(() => {
-      //   let val = changableText.shift();
-      //   changableText.push(val);
-      //   setChangedText(val);
-      //   // console.log(val);
-      // }, 1500);
+      setInterval(() => {
+        let val = changableText.shift();
+        changableText.push(val);
+        setChangedText(val);
+        // console.log(val);
+      }, 1500);
     }
   }
 
@@ -75,59 +77,64 @@ export default function HomePage(props) {
         resizeMode="cover"
         // blurRadius={2}
         style={styles.bgImage}>
-        {/* <Header navigation={navigation} title={'Home'} haveBackArrow={false} /> */}
         <ScrollView w="100%" flex="1">
           <Center p="5" flex="1">
             <Center w={'80%'}>
               <VStack>
                 <Center>
-                  <Heading
-                    color="info.100"
-                    textAlign={'center'}
-                    // fontSize="35"
-                    // fontWeight="600"
-                  >
+                  <HStack>
+                    <Text
+                      color={Colors.main200}
+                      fontSize="30"
+                      fontWeight={'500'}>
+                      {'<'}
+                    </Text>
+                    <Text color="#fff" fontSize="30" fontWeight={'500'}>
+                      Quizo
+                    </Text>
+                    <Text
+                      color={Colors.main200}
+                      fontSize="30"
+                      fontWeight={'500'}>
+                      {' />'}
+                    </Text>
+                  </HStack>
+                  {/* <Heading color="info.100" textAlign={'center'}>
                     Welcome to{' '}
-                    <Text color={'#6FFDBA'} shadow="3">
+                    <Text color={Colors.main200} shadow="3">
                       Quizo,
                     </Text>
                     {'\n'}the coding app for beginners.
-                  </Heading>
+                  </Heading> */}
                   <Box alignItems="center" textAlign={'center'} my="3">
-                    <Text fontSize={20} color="#6FFDBA" fontWeight="500">
+                    <Text fontSize={20} color={Colors.main200} fontWeight="500">
                       Learning to code
                     </Text>
-                    <Text color="#6FFDBA" fontSize={17}>
+                    <Text color={Colors.main200} fontSize={17}>
                       {changedText}
                     </Text>
                   </Box>
                 </Center>
               </VStack>
-              {/* <PresenceTransition
-              visible={isOpen}
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-                transition: {
-                  duration: 250,
-                },
-              }}> */}
+
               <Image
                 source={require('../assets/images/learn-with-fun.png')}
                 resizeMode="contain"
                 w="100%"
                 alt="home 1"
               />
-              {/* </PresenceTransition> */}
+
               <Center>
                 <HStack>
                   <Tooltip label="Click here to read more" openDelay={500}>
                     <Button
                       px="5"
                       py={'3'}
-                      bg={'#6FFDBAa0'}
+                      bg={Colors.main200 + '9f'}
+                      _text={{
+                        color: Colors.main400,
+                      }}
+                      rounded="2xl"
                       onPress={() => setIndex(1)}>
                       Start learning
                     </Button>
@@ -144,7 +151,6 @@ export default function HomePage(props) {
           </Center>
         </ScrollView>
         <StaggerComp navigation={navigation} />
-        {/* <Footer navigation={navigation} /> */}
       </ImageBackground>
     </>
   );

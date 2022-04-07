@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, {useContext} from 'react';
 import {
   Box,
@@ -11,6 +12,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AuthContext} from '../store/auth-context';
 import {StyleSheet, View} from 'react-native';
+import Colors from '../ColorPalete/styles';
 
 export default function StaggerComp({navigation}) {
   const authCtx = useContext(AuthContext);
@@ -55,8 +57,8 @@ export default function StaggerComp({navigation}) {
             <IconButton
               mb="4"
               variant="solid"
-              bg="#6FFDBA"
-              colorScheme="indigo"
+              bg={'info.200'}
+              colorScheme="info.300"
               borderRadius="full"
               onPress={() => {
                 navigation.navigate('Help');
@@ -66,8 +68,8 @@ export default function StaggerComp({navigation}) {
             <IconButton
               mb="4"
               variant="solid"
-              bg="#6FFDBA"
-              colorScheme="yellow"
+              bg={'info.200'}
+              colorScheme="info.300"
               borderRadius="full"
               onPress={() => {
                 navigation.navigate('Privacy');
@@ -86,8 +88,8 @@ export default function StaggerComp({navigation}) {
             <IconButton
               mb="4"
               variant="solid"
-              bg="#6FFDBA"
-              colorScheme="red"
+              bg={'info.200'}
+              colorScheme="info.300"
               borderRadius="full"
               onPress={() => {
                 authCtx.logout();

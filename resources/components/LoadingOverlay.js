@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
+import {Colors} from './../ColorPalete/styles';
 
 export default function LoadingOverlay({message}) {
   return (
@@ -21,5 +22,6 @@ const styles = StyleSheet.create({
   message: {
     fontSize: 16,
     marginBottom: 12,
+    color: Colors.main200,
   },
 });

@@ -5,6 +5,7 @@ import React from 'react';
 import {Heading, View, Text, Center, ScrollView} from 'native-base';
 import StaggerComp from './Stagger';
 import {ImageBackground} from 'react-native';
+import {Colors} from '../ColorPalete/styles';
 
 export default function Privacy({navigation}) {
   const arr = [
@@ -71,7 +72,7 @@ export default function Privacy({navigation}) {
                     fontSize: 20,
                     marginBottom: 10,
                     marginTop: 20,
-                    color: 'info.300',
+                    color: Colors.main200,
                   }}>
                   {q.title}
                 </Text>

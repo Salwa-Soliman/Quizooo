@@ -27,7 +27,7 @@ export default function Topic({obj}) {
     <Center w="100%">
       {heading.map((h, index) => {
         return (
-          <VStack w="100%" key={index + ''} mt="6">
+          <VStack w="100%" key={index} mt="6">
             <Box bg="#6FFFF220" p="5" rounded={'xl'}>
               <Heading color="info.100" mb="3" fontSize={'20'} fontWeight="700">
                 {heading[index]}
@@ -43,17 +43,22 @@ export default function Topic({obj}) {
                 bg="#6FFFF25f"
                 maxW="100%"
                 mt="5"
-                p="5"
+                p={note ? '5' : '0'}
+                minH={note ? '50' : '0'}
                 //   borderTopLeftRadius={'60'}
                 borderTopRightRadius={'50'}
                 //   borderBottomRightRadius="60"
                 borderBottomLeftRadius="50">
-                <Text fontWeight="700" color="info.200" underline>
-                  Note:
-                </Text>
-                <Text pr="5" pl="3" color="info.200" fontWeight="500">
-                  {note}
-                </Text>
+                {note ? (
+                  <>
+                    <Text fontWeight="700" color="info.200" underline>
+                      Note:
+                    </Text>
+                    <Text pr="5" pl="3" color="info.200" fontWeight="500">
+                      {note}
+                    </Text>
+                  </>
+                ) : null}
               </HStack>
             )}
             {index === exampleIndex && (

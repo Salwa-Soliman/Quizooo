@@ -1,3 +1,8 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/self-closing-comp */
+/* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
 import React, {Component, useContext, useState, useEffect} from 'react';
 import {
   StyleSheet,
@@ -9,12 +14,14 @@ import {
   ScrollView,
   FlatList,
 } from 'react-native';
-import {Button} from 'native-base';
+import {Button, Heading} from 'native-base';
 import {AuthContext} from '../store/auth-context';
 import {Card} from 'react-native-elements';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import StaggerComp from './Stagger';
+import {ImageBackground} from 'react-native';
+import {Colors} from '../ColorPalete/styles';
 
 export default function UserProfileView({navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -44,13 +51,15 @@ export default function UserProfileView({navigation}) {
             quizzes.push({email, quiz, score});
             setData(quizzes);
           });
-        });
+        })
+        .catch(e => console.log(e));
 
       firestore()
         .collection('Lessons')
         .doc(email)
         .get()
         .then(querySnapshot => {
+          // eslint-disable-next-line dot-notation
           setLessonIndex(querySnapshot.data()['index']);
         });
     });
@@ -61,10 +70,19 @@ export default function UserProfileView({navigation}) {
   }, []);
 
   return (
-    <>
+    <ImageBackground
+      resizeMode="cover"
+      source={require('../assets/images/0150afa24b80b0a16a78fdf31b357701.jpg')}>
       <ScrollView>
         <View style={styles.container}>
           <View style={styles.header}>
+            <View
+              style={{
+                height: 3,
+                backgroundColor: Colors.main200,
+                position: 'relative',
+                top: 100,
+              }}></View>
             <View style={styles.headerContent}>
               <Image
                 style={styles.avatar}
@@ -85,6 +103,7 @@ export default function UserProfileView({navigation}) {
                 data={[{name: 'test'}]}
                 renderItem={({item}) => (
                   <View style={styles.card}>
+                    {/* <Heading textAlign="center">Progress</Heading> */}
                     <Card style={styles.cardback} title="Local Modules">
                       <Image
                         style={styles.trackimg}
@@ -143,7 +162,7 @@ export default function UserProfileView({navigation}) {
         <Button onPress={authCtx.logout}>Logout</Button>
       </ScrollView>
       <StaggerComp navigation={navigation} />
-    </>
+    </ImageBackground>
   );
 }
 
@@ -165,7 +184,7 @@ const styles = StyleSheet.create({
   },
   header: {
     // backgroundColor: "#DCDCDC",
-    backgroundColor: '#211F39',
+    // backgroundColor: '#211F39',
   },
   headerContent: {
     padding: 30,
@@ -269,6 +288,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: 'black',
+    color: Colors.main200,
   },
 });
