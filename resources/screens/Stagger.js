@@ -19,7 +19,7 @@ export default function StaggerComp({navigation}) {
   return (
     <View style={styles.mainView}>
       <Center>
-        <Box alignItems="center" minH="180">
+        <Box alignItems="center" minH="240">
           <Stagger
             visible={isOpen}
             initial={{
@@ -45,7 +45,7 @@ export default function StaggerComp({navigation}) {
               scale: 0.5,
               opacity: 0,
               transition: {
-                duration: 100,
+                duration: 50,
                 stagger: {
                   offset: 30,
                   reverse: true,
