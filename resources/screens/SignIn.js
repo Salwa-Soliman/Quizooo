@@ -35,7 +35,7 @@ export default function SignIn({navigation}) {
 
   return (
     <ImageBackground
-      source={require('../assets/images/0150afa24b80b0a16a78fdf31b357701.jpg')}
+      source={require('../assets/images/bg.jpg')}
       resizeMode="cover"
       // blurRadius={2}
       style={styles.bgImage}>
@@ -62,8 +62,8 @@ export default function SignIn({navigation}) {
                   fontSize="18"
                   onChangeText={val => setEmail(val)}
                   value={email}
-                  placeholder="xyz12@gmail.com"
-                  placeholderTextColor={'gray.500'}
+                  // placeholder="xyz12@gmail.com"
+                  // placeholderTextColor={'gray.500'}
                 />
               </FormControl>
               <FormControl>
@@ -85,8 +85,8 @@ export default function SignIn({navigation}) {
                   value={password}
                   color={Colors.mainColor}
                   fontSize="18"
-                  placeholder="At least 8 characters"
-                  placeholderTextColor={'gray.500'}
+                  // placeholder="At least 8 characters"
+                  // placeholderTextColor={'gray.500'}
                 />
                 <Link
                   _text={{
@@ -102,7 +102,7 @@ export default function SignIn({navigation}) {
               <Button
                 bg={Colors.mainColor}
                 mt="2"
-                colorScheme="indigo"
+                colorScheme={'info.300'}
                 onPress={() => checkUserInputs()}>
                 Sign in
               </Button>
@@ -162,7 +162,6 @@ export default function SignIn({navigation}) {
       try {
         const token = await login(email, password);
         authContext.authenticate(email, token);
-        // navigation.navigate('Tracks');
       } catch (err) {
         setmodalError({
           header: 'Authintication Failed!',

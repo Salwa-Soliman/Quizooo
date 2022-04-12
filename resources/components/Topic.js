@@ -13,7 +13,7 @@ import {
 import React from 'react';
 import {WebView} from 'react-native-webview';
 import {useEffect} from 'react';
-
+import {Colors} from '../ColorPalete/styles';
 export default function Topic({obj}) {
   obj = obj || {};
 
@@ -28,19 +28,32 @@ export default function Topic({obj}) {
       {heading.map((h, index) => {
         return (
           <VStack w="100%" key={index} mt="6">
-            <Box bg="#6FFFF220" p="5" rounded={'xl'}>
-              <Heading color="info.100" mb="3" fontSize={'20'} fontWeight="700">
+            <Box
+              bg={Colors.blue100 + '20'}
+              borderColor={Colors.blue100 + '80'}
+              borderWidth="1"
+              p="5"
+              rounded={'xl'}>
+              <Heading
+                // color={Colors.blue100}
+                color={Colors.mainColor + 'c0'}
+                mb="3"
+                fontSize={'20'}
+                fontWeight="700">
                 {heading[index]}
               </Heading>
               {subText[index].map(text => (
-                <Text color="info.100" mb="2" fontWeight="500">
+                <Text color="info.100" mb="2.5" fontWeight="500">
                   {text}
                 </Text>
               ))}
             </Box>
             {index === noteIndex && (
               <HStack
-                bg="#6FFFF25f"
+                // bg={Colors.orange300 + 'c0'}
+                bg={Colors.mainColor + '40'}
+                borderColor={Colors.mainColor + '80'}
+                borderWidth={note ? '2' : '0'}
                 maxW="100%"
                 mt="5"
                 p={note ? '5' : '0'}
@@ -68,7 +81,7 @@ export default function Topic({obj}) {
                   flex: 1,
                   marginTop: 20,
                   width: '100%',
-                  height: 600,
+                  height: 500,
                 }}
               />
             )}

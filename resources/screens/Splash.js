@@ -6,37 +6,29 @@ import {AuthContext} from '../store/auth-context';
 import {Center, Text, HStack} from 'native-base';
 import {Colors} from '../ColorPalete/styles';
 import {ImageBackground, StatusBar} from 'react-native';
-
+import Quizo from '../components/Quizo';
 export default function Splash({navigation}) {
   const authCtx = useContext(AuthContext);
+  const nextScreen = authCtx.isAuthenticated ? 'NavigationTabs' : 'Onboarding';
+  // console.log(nextScreen);
 
   return (
     <ImageBackground
       style={{flex: 1}}
-      source={require('../assets/images/0150afa24b80b0a16a78fdf31b357701.jpg')}
+      source={require('../assets/images/bg.jpg')}
       resizeMode="cover">
       <StatusBar barStyle="light-content" backgroundColor="black" />
       {/* bg={Colors.bgColor} */}
       <Center flex="1" w="100%">
-        <HStack>
-          <Text color={Colors.main200} fontSize="40" fontWeight={'500'}>
-            {'<'}
-          </Text>
-          <Text color="#fff" fontSize="40" fontWeight={'500'}>
-            Quizo
-          </Text>
-          <Text color={Colors.main200} fontSize="40" fontWeight={'500'}>
-            {' />'}
-          </Text>
-        </HStack>
+        <Quizo fontSize="40" />
       </Center>
-      {navigateFromSplash(navigation)}
+      {navigateFromSplash()}
     </ImageBackground>
   );
 
   function navigateFromSplash() {
+    // console.log(nextScreen);
     setTimeout(() => {
-      const nextScreen = authCtx.token ? 'Tracks' : 'Onboarding';
       navigation.navigate(nextScreen);
     }, 2000);
   }

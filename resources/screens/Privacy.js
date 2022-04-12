@@ -48,39 +48,45 @@ export default function Privacy({navigation}) {
   return (
     <>
       <ImageBackground
-        source={require('../assets/images/0150afa24b80b0a16a78fdf31b357701.jpg')}
+        source={require('../assets/images/bg.jpg')}
         resizeMode="cover"
         // blurRadius={2}
         style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Center w="100%">
-          <ScrollView safeArea p="2" w="100%" py="8" px="8">
-            <Heading textAlign={'center'} mb="3" color={'info.300'}>
-              Privacy
-            </Heading>
+        <ScrollView safeArea p="2" w="100%" py="8" px="8">
+          <Heading textAlign={'center'} mb="3" color={Colors.mainColor + 'c0'}>
+            Privacy
+          </Heading>
 
-            {/* hr  */}
+          {/* hr  */}
+          <View
+            borderRadius={'xl'}
+            style={{
+              height: 2,
+              backgroundColor: Colors.mainColor + 'c0',
+            }}
+          />
+          {arr.map((q, i) => (
             <View
-              style={{
-                height: 2,
-                backgroundColor: 'info.300',
-              }}
-            />
-            {arr.map((q, i) => (
-              <View key={i}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    marginBottom: 10,
-                    marginTop: 20,
-                    color: Colors.main200,
-                  }}>
-                  {q.title}
-                </Text>
-                <Text style={{color: 'white'}}>{q.content}</Text>
-              </View>
-            ))}
-          </ScrollView>
-        </Center>
+              key={i}
+              bg={Colors.blue100 + '20'}
+              borderColor={Colors.blue100 + '80'}
+              p="5"
+              borderWidth="1"
+              // p="2"
+              rounded={'xl'}
+              mt="5">
+              <Text
+                color={Colors.mainColor + 'c0'}
+                style={{
+                  fontSize: 20,
+                  marginBottom: 10,
+                }}>
+                {q.title}
+              </Text>
+              <Text style={{color: 'white'}}>{q.content}</Text>
+            </View>
+          ))}
+        </ScrollView>
         <StaggerComp navigation={navigation} />
       </ImageBackground>
     </>

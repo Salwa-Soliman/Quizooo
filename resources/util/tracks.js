@@ -2,7 +2,7 @@
 export const tracks = [
   {
     image: {
-      uri: 'https://img.freepik.com/free-vector/programming-concept-illustration_114360-1351.jpg?t=st=1649275590~exp=1649276190~hmac=a1219628fd5fa3076bed2a34d10c4ea1d23356bcd79c642d337b6b46fbd734da&w=740',
+      uri: 'https://img.freepik.com/free-vector/layout-abstract-concept-illustration-website-development-user-interface-frontend-graphic-design-team-landing-page-responsive-design-marking-tool-consistency_335657-3346.jpg?t=st=1649585436~exp=1649586036~hmac=ace61245827f6b13aebf891bc0572eaeaf8c4ed238f47b1c6c38b0868645586e&w=740',
     },
     cources: [
       {
@@ -53,7 +53,7 @@ export const tracks = [
   },
   {
     image: {
-      uri: 'https://img.freepik.com/free-vector/software-developers-working-script-coding-engineer-character-programming-php-python-javascript-other-languages_90220-243.jpg?w=740&t=st=1649256972~exp=1649257572~hmac=4e0ff8a62bb478d27fcf84c13a8b607125c0ed5ea8a012cd29f71a5defa56951',
+      uri: 'https://img.freepik.com/free-vector/data-center-abstract-concept-illustration_335657-3707.jpg?t=st=1649586175~exp=1649586775~hmac=7ef3907a595453aea76f52b1a81fb5bb5ef49dc5b9bbfa904db1f86ef1b7f34e&w=740',
     },
     cources: [
       {
@@ -104,7 +104,7 @@ export const tracks = [
   },
   {
     image: {
-      uri: 'https://img.freepik.com/free-vector/programmer-concept-illustration_114360-3016.jpg?t=st=1649275590~exp=1649276190~hmac=011aaf4fee8799ff9116eb6d8a817329067d0e2c4c0d3076ce629bda1d300dba&w=740',
+      uri: 'https://img.freepik.com/free-vector/big-data-analytics-abstract-concept-illustration_335657-3734.jpg?w=740',
     },
     cources: [
       {
@@ -155,7 +155,7 @@ export const tracks = [
   },
   {
     image: {
-      uri: 'https://img.freepik.com/free-vector/artificial-intelligence-illustration_33099-584.jpg?w=740&t=st=1649257705~exp=1649258305~hmac=be6cb28f3d5be210dfc5c4f1a97589b98436b66f35e7168a018164e5d1483cbf',
+      uri: 'https://img.freepik.com/free-vector/affective-computing-abstract-concept-illustration_335657-3895.jpg?t=st=1649586057~exp=1649586657~hmac=8762da8ba950d2b99db444442f4974722a5890c9fb11d39e9b245beee639f789&w=740',
     },
     cources: [
       {
@@ -199,7 +199,7 @@ export const tracks = [
   },
   {
     image: {
-      uri: 'https://img.freepik.com/free-vector/cloud-computing-illustration_24877-52329.jpg?t=st=1649276188~exp=1649276788~hmac=1da3fd300cb31048b726e287dd2ec4b837a0de64c6420271a1b90c6bbf874311&w=740',
+      uri: 'https://img.freepik.com/free-vector/uploading-cloud-storage-wireless-access-information-online-service-global-hosting-virtual-space-available-secure-desktop-vector-isolated-concept-metaphor-illustration_335657-4295.jpg?w=740',
     },
     cources: [
       {

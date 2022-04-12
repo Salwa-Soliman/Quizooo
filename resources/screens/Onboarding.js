@@ -8,6 +8,7 @@ import Pagination from '../components/Pagination';
 import OnboardingButtons from '../components/OnboardingButtons';
 // import {firebase} from '@react-native-firebase/app';
 
+import Quizo from './../components/Quizo';
 export default function Onboarding({navigation}) {
   // Runs only one time to change text/1500ms
   useEffect(() => {
@@ -25,14 +26,6 @@ export default function Onboarding({navigation}) {
   const [changedText, setChangedText] = useState('opens new doors');
   // State to indicate that Screen's opened => text has changed
   const [isOpen, setIsOpen] = useState(false);
-  // Array of text to change
-  const changableText = [
-    'expands your network',
-    'develops new skills',
-    'launches new careers',
-    'creates new hobbies',
-    'opens new doors',
-  ];
 
   // Flatlist Content
   const slides = [
@@ -88,31 +81,12 @@ export default function Onboarding({navigation}) {
     <Center w="100%" m="0" bg={Colors.bgColor} flex={'10'}>
       <ImageBackground
         resizeMode="cover"
-        source={require('../assets/images/0150afa24b80b0a16a78fdf31b357701.jpg')}>
+        source={require('../assets/images/bg.jpg')}>
         <StatusBar barStyle="light-content" backgroundColor="black" />
 
+        {/* Logo  */}
         <Box flex={'2'}>
-          {/* Logo  */}
-          <HStack justifyContent={'center'} pt={'10'}>
-            <Text color={Colors.mainColor} fontSize="20" fontWeight={'500'}>
-              {'<'}
-            </Text>
-            <Text color="#fff" fontSize="20" fontWeight={'500'}>
-              Quizo
-            </Text>
-            <Text color={Colors.mainColor} fontSize="20" fontWeight={'500'}>
-              {' />'}
-            </Text>
-          </HStack>
-          {/* Changable text  */}
-          {/* <VStack alignItems="center" textAlign={'center'} my="3">
-            <Text fontSize={20} color="info.300" fontWeight="500">
-              Learning to code
-            </Text>
-            <Text color="info.100" fontSize={17}>
-              {changedText}
-            </Text>
-          </VStack> */}
+          <Quizo fontSize="20" />
         </Box>
         {/* Flatlist Containing images & text  */}
         <View flex={'4'}>

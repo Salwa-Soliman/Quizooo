@@ -4,15 +4,13 @@
 import React, {useState} from 'react';
 import {
   ScrollView,
-  View,
   Text,
   TouchableOpacity,
   Image,
+  View,
   ImageBackground,
 } from 'react-native';
 import StaggerComp from './Stagger';
-import {useEffect} from 'react';
-import {axios} from 'axios';
 import {Colors} from '../ColorPalete/styles';
 import {tracks} from '../util/tracks';
 import {Center} from 'native-base';
@@ -20,18 +18,18 @@ import {Center} from 'native-base';
 
 export default function Tracks({navigation}) {
   let navigateToCources = data => {
-    console.log(data.cources);
-    navigation.navigate('Quizzes', data.cources);
+    // console.log(data.cources);
+    navigation.navigate('Courses', data.cources);
   };
 
   return (
     <ImageBackground
       resizeMode="cover"
       style={{flex: 1}}
-      source={require('../assets/images/0150afa24b80b0a16a78fdf31b357701.jpg')}>
-      {/* bg={Colors.main100} */}
-      <Center>
-        <ScrollView style={{padding: 14}}>
+      source={require('../assets/images/bg.jpg')}>
+      {/* bg={Colors.bgColor} */}
+      <Center pt="5">
+        <ScrollView>
           <View
             style={{
               flex: 1,
@@ -53,11 +51,11 @@ export default function Tracks({navigation}) {
                       })
                     }
                     style={{
-                      borderColor: Colors.main400 + '90',
+                      borderColor: Colors.mainColor + '90',
                       borderWidth: 2,
                       margin: 9,
                       borderRadius: 20,
-                      backgroundColor: Colors.main200 + '5f',
+                      backgroundColor: Colors.mainColor + '40',
                     }}>
                     <View>
                       <Image

@@ -19,7 +19,7 @@ import {
   Modal,
 } from 'native-base';
 
-import {ImageBackground, StyleSheet} from 'react-native';
+import {ImageBackground, StyleSheet, TouchableOpacity} from 'react-native';
 import {checkIfEmailExists, signUpRequest} from '../util/http';
 import {createUser} from '../util/auth';
 import {Colors} from '../ColorPalete/styles';
@@ -40,7 +40,7 @@ export default function SignUp({navigation}) {
 
   return (
     <ImageBackground
-      source={require('../assets/images/0150afa24b80b0a16a78fdf31b357701.jpg')}
+      source={require('../assets/images/bg.jpg')}
       resizeMode="cover"
       // blurRadius={2}
       style={styles.bgImage}>
@@ -66,8 +66,8 @@ export default function SignUp({navigation}) {
                 onChangeText={val => setEmail(val)}
                 value={email}
                 fontSize="18"
-                placeholder="xyz12@gmail.com"
-                placeholderTextColor={'gray.500'}
+                // placeholder="xyz12@gmail.com"
+                // placeholderTextColor={'gray.500'}
               />
             </FormControl>
             {/* Password */}
@@ -90,8 +90,8 @@ export default function SignUp({navigation}) {
                 value={password}
                 color={Colors.mainColor}
                 fontSize="18"
-                placeholder="At least 8 characters"
-                placeholderTextColor={'gray.500'}
+                // placeholder="At least 8 characters"
+                // placeholderTextColor={'gray.500'}
               />
             </FormControl>
             {/* Confirm Password */}
@@ -114,17 +114,18 @@ export default function SignUp({navigation}) {
                 value={confirmedPassword}
                 color={Colors.mainColor}
                 fontSize="18"
-                placeholder="Same as above"
-                placeholderTextColor={'gray.500'}
+                // placeholder="Same as above"
+                // placeholderTextColor={'gray.500'}
               />
             </FormControl>
             <Button
               bg={Colors.mainColor}
               mt="2"
-              colorScheme="indigo"
+              colorScheme={'info.300'}
               onPress={() => validateInputs()}>
               Sign up
             </Button>
+
             <HStack mt="6" justifyContent="center">
               <Text fontSize="sm" color="#fff">
                 Already have an account?{'  '}
@@ -157,7 +158,8 @@ export default function SignUp({navigation}) {
                   onPress={() => {
                     setShowModal(false);
                   }}
-                  bg={Colors.mainColor}>
+                  bg={Colors.mainColor}
+                  colorScheme={'info.300'}>
                   OK
                 </Button>
               </Button.Group>

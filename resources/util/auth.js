@@ -18,8 +18,6 @@ async function authinticate(mode, email, password) {
   const token = response.data.idToken;
 
   return token;
-  // const token = response.data.idToken;
-  // return token;
 }
 
 export function createUser(email, password) {
@@ -30,9 +28,9 @@ export function login(email, password) {
   return authinticate('signInWithPassword', email, password);
 }
 
-export async function updateProfileImage(imageURL) {
-  const update = {
-    photoURL: imageURL,
-  };
-  await firebase.auth().currentUser.updateProfile(update);
-}
+// export async function updateProfileImage(imageURL) {
+//   const update = {
+//     photoURL: imageURL,
+//   };
+//   await firebase.auth().currentUser.updateProfile(update);
+// }

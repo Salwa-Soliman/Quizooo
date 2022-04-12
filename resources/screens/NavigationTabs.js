@@ -7,7 +7,6 @@ import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import Profile from './Profile';
 import HomePage from './HomePage';
 import Tracks from './Tracks';
-import LearningPaths from './LearningPaths';
 import {Colors} from '../ColorPalete/styles';
 
 export default function NavigationTabs({navigation}) {
@@ -37,9 +36,13 @@ export default function NavigationTabs({navigation}) {
   const renderTabBar = props => (
     <TabBar
       {...props}
-      activeColor={Colors.main200}
-      inactiveColor={Colors.main200 + '50'}
-      style={{backgroundColor: Colors.main500, paddingVertical: 10}}
+      activeColor={Colors.mainColor}
+      inactiveColor={Colors.mainColor + '80'}
+      style={{
+        backgroundColor: '#000',
+        paddingVertical: 10,
+        // fontWeight: 'bold',
+      }}
     />
   );
 

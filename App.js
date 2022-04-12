@@ -19,13 +19,11 @@ import Tracks from './resources/screens/Tracks';
 import AuthContextProvider from './resources/store/auth-context';
 import {AuthContext} from './resources/store/auth-context';
 import SingleQuestion from './resources/screens/SingleQuestion';
-import Quizzes from './resources/screens/Quizzes';
-import DrawerNavigator from './resources/components/Drawer';
+import Courses from './resources/screens/Courses';
 import 'react-native-gesture-handler';
 import Profile from './resources/screens/Profile';
 import NavigationTabs from './resources/screens/NavigationTabs';
-import StaggerComp from './resources/screens/Stagger';
-import LearningPaths from './resources/screens/LearningPaths';
+import Tutorial from './resources/screens/Tutorial';
 
 const Stack = createNativeStackNavigator();
 
@@ -70,7 +68,18 @@ function AuthStack() {
 
 function AuthenticatedStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.blue300,
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+          // color: Colors.orange100,
+          color: '#fff',
+        },
+        // headerTitleAlign: 'center',
+      }}>
       <Stack.Screen
         name="Splash"
         component={Splash}
@@ -79,21 +88,6 @@ function AuthenticatedStack() {
       <Stack.Screen
         name="NavigationTabs"
         component={NavigationTabs}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Onboarding"
-        component={Onboarding}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="SignIn"
-        component={SignIn}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="SignUp"
-        component={SignUp}
         options={{headerShown: false}}
       />
       <Stack.Screen
@@ -107,24 +101,33 @@ function AuthenticatedStack() {
         // options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Quizzes"
-        component={Quizzes}
-        // options={{headerShown: false}}
+        name="Courses"
+        component={Courses}
+        // options={{
+        //   headerStyle: {
+        //     backgroundColor: Colors.blue300,
+        //   },
+        //   headerTitleStyle: {
+        //     fontWeight: 'bold',
+        //     color: '#fff',
+        //     textAlign: 'center',
+        //   },
+        // }}
       />
       <Stack.Screen
         name="SingleQuestion"
         component={SingleQuestion}
-        // options={{headerShown: false}}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="Help"
         component={Help}
-        options={{headerStyle: {backgroundColor: '#6FFDBA'}}}
+        // options={{headerStyle: {backgroundColor: '#6FFDBA'}}}
       />
       <Stack.Screen
         name="Privacy"
         component={Privacy}
-        options={{headerStyle: {backgroundColor: '#6FFDBA'}}}
+        // options={{headerStyle: {backgroundColor: '#6FFDBA'}}}
       />
       <Stack.Screen
         name="Profile"
@@ -132,16 +135,16 @@ function AuthenticatedStack() {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="LearningPaths"
-        component={LearningPaths}
+        name="Tutorial"
+        component={Tutorial}
         // options={{headerShown: false}}
       />
 
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Onboarding"
         component={Onboarding}
         options={{headerShown: false}}
-      />
+      /> */}
     </Stack.Navigator>
   );
 }
@@ -151,65 +154,8 @@ function Navigation() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="NavigationTabs"
-          component={NavigationTabs}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="HomePage"
-          component={HomePage}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Tracks"
-          component={Tracks}
-          // options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Quizzes"
-          component={Quizzes}
-          options={{headerStyle: {backgroundColor: Colors.main200}}}
-
-          // options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="SingleQuestion"
-          component={SingleQuestion}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Help"
-          component={Help}
-          options={{headerStyle: {backgroundColor: Colors.main200}}}
-        />
-        <Stack.Screen
-          name="Privacy"
-          component={Privacy}
-          options={{headerStyle: {backgroundColor: Colors.main200}}}
-        />
-        <Stack.Screen
-          name="Profile"
-          component={Profile}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="LearningPaths"
-          component={LearningPaths}
-          options={{headerStyle: {backgroundColor: Colors.main200}}}
-
-          // options={{headerShown: false}}
-        />
-
-        <Stack.Screen
-          name="Onboarding"
-          component={Onboarding}
-          options={{headerShown: false}}
-        />
-      </Stack.Navigator>
-      {/* {!authCtx.isAuthenticated && <AuthStack />}
-      {authCtx.isAuthenticated && <AuthenticatedStack />} */}
+      {!authCtx.isAuthenticated && <AuthStack />}
+      {authCtx.isAuthenticated && <AuthenticatedStack />}
     </NavigationContainer>
   );
 }

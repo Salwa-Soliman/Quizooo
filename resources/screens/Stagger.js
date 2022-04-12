@@ -7,12 +7,10 @@ import {
   Stagger,
   HStack,
   Center,
-  Tooltip,
 } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AuthContext} from '../store/auth-context';
 import {StyleSheet, View} from 'react-native';
-import Colors from '../ColorPalete/styles';
 
 export default function StaggerComp({navigation}) {
   const authCtx = useContext(AuthContext);
@@ -54,47 +52,61 @@ export default function StaggerComp({navigation}) {
                 },
               },
             }}>
+            {/* Home */}
             <IconButton
               mb="4"
               variant="solid"
-              bg={'info.200'}
-              colorScheme="info.300"
+              bg="#035B50b0"
+              colorScheme="#99BAFF50"
+              borderRadius="full"
+              onPress={() => {
+                navigation.navigate('NavigationTabs');
+              }}
+              icon={<Icon size={30} name="home" style={{color: '#fff'}} />}
+            />
+            {/* Help  */}
+            <IconButton
+              mb="4"
+              variant="solid"
+              bg="#035B50b0"
+              colorScheme="#99BAFF50"
               borderRadius="full"
               onPress={() => {
                 navigation.navigate('Help');
               }}
-              icon={<Icon size={30} name="help-circle-outline" />}
+              icon={
+                <Icon
+                  size={30}
+                  name="help-network-outline"
+                  style={{color: '#fff'}}
+                />
+              }
             />
+            {/* Privacy  */}
             <IconButton
               mb="4"
               variant="solid"
-              bg={'info.200'}
-              colorScheme="info.300"
+              bg="#035B50b0"
+              colorScheme="#99BAFF50"
               borderRadius="full"
               onPress={() => {
                 navigation.navigate('Privacy');
               }}
-              icon={<Icon size={30} name="shield-account" />}
+              icon={
+                <Icon size={30} name="shield-account" style={{color: '#fff'}} />
+              }
             />
-
-            {/* <IconButton
-              mb="4"
-              variant="solid"
-              bg="teal.400"
-              colorScheme="teal"
-              borderRadius="full"
-              icon={<Icon size={30} name="account" />}
-            /> */}
+            {/* Logout  */}
             <IconButton
               mb="4"
               variant="solid"
-              bg={'info.200'}
-              colorScheme="info.300"
+              bg="#035B50b0"
+              colorScheme="#99BAFF50"
               borderRadius="full"
               onPress={() => {
                 authCtx.logout();
               }}
-              icon={<Icon size={30} name="logout" />}
+              icon={<Icon size={30} name="logout" style={{color: '#fff'}} />}
             />
           </Stagger>
         </Box>
@@ -102,10 +114,13 @@ export default function StaggerComp({navigation}) {
           <IconButton
             variant="solid"
             borderRadius="full"
-            size="lg"
+            size="md"
             onPress={onToggle}
-            bg="#ffffff"
-            icon={<Icon size={30} name="dots-horizontal" />}
+            bg="#6FFDBA80"
+            colorScheme="#99BAFF"
+            icon={
+              <Icon size={35} name="dots-horizontal" style={{color: '#fff'}} />
+            }
           />
         </HStack>
       </Center>
